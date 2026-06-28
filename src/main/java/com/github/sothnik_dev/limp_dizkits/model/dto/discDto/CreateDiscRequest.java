@@ -4,20 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.UUID;
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class DiscDto {
-    private UUID discId;
+@AllArgsConstructor
+public class CreateDiscRequest {
     private String discTitle;
     private String discDescription;
-    private double discValue;
+    private double discPrice;
     private String discImg;
     private String discDemoMsc;
 }
-
-
