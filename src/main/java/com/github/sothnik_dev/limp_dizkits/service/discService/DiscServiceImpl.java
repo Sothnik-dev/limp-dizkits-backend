@@ -5,11 +5,13 @@ import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.CreateDiscRequest;
 import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.DiscDto;
 import com.github.sothnik_dev.limp_dizkits.model.entity.discEntity.DiscModel;
 import com.github.sothnik_dev.limp_dizkits.repository.discRepository.DiscRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class DiscServiceImpl implements  DiscService{
     private DiscRepository discRepository;
     private DiscMapper discMapper;
@@ -24,11 +26,14 @@ public class DiscServiceImpl implements  DiscService{
     @Override
     public DiscDto createDisc(CreateDiscRequest request) {
         DiscModel disc = discMapper.toEntity(request);
+        discRepository.save(disc);
         return discMapper.toDto(disc);
     }
 
     @Override
     public void deleteDisc(UUID id) {
+        DiscModel disc = discRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Id não encontrado"));
         discRepository.deleteById(id);
     }
 }

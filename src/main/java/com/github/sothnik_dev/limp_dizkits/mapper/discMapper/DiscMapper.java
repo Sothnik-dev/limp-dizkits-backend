@@ -23,8 +23,8 @@ public class DiscMapper {
         disc.setDiscTitle(request.getDiscTitle());
         disc.setDiscDescription(request.getDiscDescription());
         disc.setDiscValue(request.getDiscValue());
-        disc.setDiscImage(request.getDiscImg());
-        disc.setDiscDemoMusic(request.getDiscDemoMsc());
+        disc.setDiscImage(request.getDiscImage());
+        disc.setDiscDemoMusic(request.getDiscDemoMusic());
 
         return disc;
     }

@@ -1,14 +1,11 @@
 package com.github.sothnik_dev.limp_dizkits.controller.discController;
 
-import com.github.sothnik_dev.limp_dizkits.mapper.discMapper.DiscMapper;
 import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.CreateDiscRequest;
 import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.DiscDto;
-import com.github.sothnik_dev.limp_dizkits.model.entity.discEntity.DiscModel;
 import com.github.sothnik_dev.limp_dizkits.service.discService.DiscService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -16,16 +13,14 @@ import java.util.UUID;
 public class DiscController {
 
     private final DiscService discService;
-    private final DiscMapper discMapper;
 
-    public DiscController(DiscService discService, DiscMapper discMapper) {
+    public DiscController(DiscService discService) {
         this.discService = discService;
-        this.discMapper = discMapper;
     }
 
     @GetMapping("/hello")
-    public String hello(){
-        return "Olá, dev";
+    public ResponseEntity<String> hello() {
+        return ResponseEntity.ok("Olá, dev");
     }
 
     @GetMapping("/{id}")
@@ -34,12 +29,11 @@ public class DiscController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<DiscDto> postDisc(@RequestBody DiscModel disc){
-        DiscDto dto = discMapper.toDto(disc);
-        return ResponseEntity.ok(dto);
+    public ResponseEntity<DiscDto> postDisc(@RequestBody CreateDiscRequest request){
+        return ResponseEntity.ok(discService.createDisc(request));
     }
 
-    @DeleteMapping("disc/delete")
+    @DeleteMapping("/delete")
     public void deleteDisc(UUID id){
         discService.deleteDisc(id);
     }

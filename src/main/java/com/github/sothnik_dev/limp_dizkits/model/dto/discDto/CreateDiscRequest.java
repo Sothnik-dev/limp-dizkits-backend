@@ -11,6 +11,6 @@ public class CreateDiscRequest {
     private String discTitle;
     private String discDescription;
     private double discValue;
-    private String discImg;
-    private String discDemoMsc;
+    private String discImage;
+    private String discDemoMusic;
 }
