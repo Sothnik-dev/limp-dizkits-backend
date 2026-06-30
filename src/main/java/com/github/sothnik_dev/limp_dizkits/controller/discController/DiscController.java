@@ -19,12 +19,7 @@ public class DiscController {
         this.discService = discService;
     }
 
-    @GetMapping("/hello")
-    public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Olá, dev");
-    }
-
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<DiscDto> getDisc(@PathVariable UUID id) {
         return ResponseEntity.ok(discService.findDiscById(id));
     }
@@ -39,8 +34,13 @@ public class DiscController {
         return ResponseEntity.ok(discService.createDisc(request));
     }
 
-    @DeleteMapping("/delete")
-    public void deleteDisc(UUID id){
+    @PutMapping("/update/{id}")
+    public ResponseEntity<DiscDto> putDisc(@PathVariable UUID id, @RequestBody CreateDiscRequest request) {
+        return ResponseEntity.ok(discService.updateDisc(id, request));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteDisc(@PathVariable UUID id){
         discService.deleteDisc(id);
     }
 }

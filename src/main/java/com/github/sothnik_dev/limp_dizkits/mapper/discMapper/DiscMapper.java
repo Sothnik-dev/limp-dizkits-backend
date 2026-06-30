@@ -47,4 +47,14 @@ public class DiscMapper {
 
         return dtoList;
     }
+
+    public DiscModel updateItem(DiscModel disc, CreateDiscRequest request) {
+        disc.setDiscTitle(request.getDiscTitle());
+        disc.setDiscDescription(request.getDiscDescription());
+        disc.setDiscValue(request.getDiscValue());
+        disc.setDiscImage(request.getDiscImage());
+        disc.setDiscDemoMusic(request.getDiscDemoMusic());
+
+        return disc;
+    }
 }

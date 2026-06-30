@@ -33,6 +33,15 @@ public class DiscServiceImpl implements  DiscService{
     }
 
     @Override
+    public DiscDto updateDisc(UUID id, CreateDiscRequest request) {
+        DiscModel disc = discRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Did not find the id"));
+        discMapper.updateItem(disc, request);
+        discRepository.save(disc);
+        return discMapper.toDto(disc);
+    }
+
+    @Override
     public List<DiscDto> findAllDisc() {
         List<DiscModel> list = discRepository.findAll().stream().toList();
         return discMapper.toListDto(list);
@@ -42,6 +51,6 @@ public class DiscServiceImpl implements  DiscService{
     public void deleteDisc(UUID id) {
         DiscModel disc = discRepository.findById(id)
                         .orElseThrow(() -> new RuntimeException("Id não encontrado"));
-        discRepository.deleteById(id);
+        discRepository.delete(disc);
     }
 }
