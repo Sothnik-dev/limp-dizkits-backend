@@ -1,8 +1,10 @@
 package com.github.sothnik_dev.limp_dizkits.controller.discController;
 
+import com.github.sothnik_dev.limp_dizkits.exception.discException.DiscNotFoundException;
 import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.CreateDiscRequest;
 import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.DiscDto;
 import com.github.sothnik_dev.limp_dizkits.service.discService.DiscService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +33,9 @@ public class DiscController {
 
     @PostMapping("/create")
     public ResponseEntity<DiscDto> postDisc(@RequestBody CreateDiscRequest request){
+        if (request == null) {
+            throw new DiscNotFoundException("Disc was'nt created, inapropriated body", HttpStatus.BAD_REQUEST.value());
+        }
         return ResponseEntity.ok(discService.createDisc(request));
     }
 

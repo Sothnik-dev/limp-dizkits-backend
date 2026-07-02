@@ -3,7 +3,6 @@ package com.github.sothnik_dev.limp_dizkits.mapper.discMapper;
 import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.CreateDiscRequest;
 import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.DiscDto;
 import com.github.sothnik_dev.limp_dizkits.model.entity.discEntity.DiscModel;
-import com.github.sothnik_dev.limp_dizkits.repository.discRepository.DiscRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,12 +10,6 @@ import java.util.List;
 
 @Component
 public class DiscMapper {
-    private final DiscRepository discRepository;
-
-    public DiscMapper(DiscRepository discRepository) {
-        this.discRepository = discRepository;
-    }
-
     public DiscDto toDto(DiscModel disc) {
         DiscDto dto = new DiscDto();
         dto.setDiscId(disc.getDiscId());
@@ -48,13 +41,11 @@ public class DiscMapper {
         return dtoList;
     }
 
-    public DiscModel updateItem(DiscModel disc, CreateDiscRequest request) {
+    public void updateItem(DiscModel disc, CreateDiscRequest request) {
         disc.setDiscTitle(request.getDiscTitle());
         disc.setDiscDescription(request.getDiscDescription());
         disc.setDiscValue(request.getDiscValue());
         disc.setDiscImage(request.getDiscImage());
         disc.setDiscDemoMusic(request.getDiscDemoMusic());
-
-        return disc;
     }
 }
