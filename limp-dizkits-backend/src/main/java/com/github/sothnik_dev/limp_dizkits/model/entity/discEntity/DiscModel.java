@@ -1,12 +1,12 @@
 package com.github.sothnik_dev.limp_dizkits.model.entity.discEntity;
 
-import com.github.sothnik_dev.limp_dizkits.model.dto.discDto.CreateDiscRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -24,19 +24,14 @@ public class DiscModel {
     private String discTitle;
     @Column(nullable = false )
     private String discDescription;
-    @Column(nullable = false )
+    @Column(nullable = false)
     private double discValue;
+    @Column(nullable = false )
+    private int discAmount;
+    @Column(nullable = false)
+    private List<String> discTags;
     @Column(nullable = false )
     private String discImage;
     @Column
     private String discDemoMusic;
-
-    public DiscModel(CreateDiscRequest request) {
-        DiscModel disc = new DiscModel();
-        disc.setDiscTitle(request.getDiscTitle());
-        disc.setDiscDescription(request.getDiscDescription());
-        disc.setDiscValue(request.getDiscValue());
-        disc.setDiscImage(request.getDiscImage());
-        disc.setDiscDemoMusic(request.getDiscDemoMusic());
-    }
 }

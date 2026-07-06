@@ -16,8 +16,11 @@ public class DiscMapper {
         dto.setDiscTitle(disc.getDiscTitle());
         dto.setDiscDescription(disc.getDiscDescription());
         dto.setDiscValue(disc.getDiscValue());
+        dto.setDiscAmount(disc.getDiscAmount());
+        dto.setDiscTags(disc.getDiscTags());
         dto.setDiscImage(disc.getDiscImage());
         dto.setDiscDemoMusic(disc.getDiscDemoMusic());
+
         return dto;
     }
 
@@ -26,6 +29,8 @@ public class DiscMapper {
         disc.setDiscTitle(request.getDiscTitle());
         disc.setDiscDescription(request.getDiscDescription());
         disc.setDiscValue(request.getDiscValue());
+        disc.setDiscAmount(request.getDiscAmount());
+        disc.setDiscTags(request.getDiscTags());
         disc.setDiscImage(request.getDiscImage());
         disc.setDiscDemoMusic(request.getDiscDemoMusic());
 
@@ -45,6 +50,8 @@ public class DiscMapper {
         disc.setDiscTitle(request.getDiscTitle());
         disc.setDiscDescription(request.getDiscDescription());
         disc.setDiscValue(request.getDiscValue());
+        disc.setDiscAmount(request.getDiscAmount());
+        disc.setDiscTags(request.getDiscTags());
         disc.setDiscImage(request.getDiscImage());
         disc.setDiscDemoMusic(request.getDiscDemoMusic());
     }

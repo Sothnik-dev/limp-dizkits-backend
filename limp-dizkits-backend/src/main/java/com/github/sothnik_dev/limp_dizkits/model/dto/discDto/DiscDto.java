@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -17,6 +18,8 @@ public class DiscDto {
     private String discTitle;
     private String discDescription;
     private double discValue;
+    private int discAmount;
+    private List<String> discTags;
     private String discImage;
     private String discDemoMusic;
 }
